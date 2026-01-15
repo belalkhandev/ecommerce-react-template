@@ -79,7 +79,10 @@ const QuotationList: FC = () => {
                           </div>
                           <div>
                             <h3 className="font-semibold text-gray-900">{quotation.quotationNumber}</h3>
-                            <p className="text-sm text-gray-500">{quotation.companyName}</p>
+                            <p className="text-sm text-gray-500">
+                              {quotation.fullName}
+                              {quotation.companyName && ` - ${quotation.companyName}`}
+                            </p>
                           </div>
                         </div>
                         <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${statusConfig.bgColor} ${statusConfig.color}`}>

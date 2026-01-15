@@ -242,17 +242,19 @@ const QuotationDetails: FC = () => {
             </div>
 
             <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Company Details</h2>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Contact Details</h2>
 
               <div className="space-y-3 text-sm">
                 <div>
-                  <span className="text-gray-500 block">Company</span>
-                  <span className="font-medium text-gray-900">{quotation.companyName}</span>
+                  <span className="text-gray-500 block">Name</span>
+                  <span className="font-medium text-gray-900">{quotation.fullName}</span>
                 </div>
-                <div>
-                  <span className="text-gray-500 block">Contact Person</span>
-                  <span className="font-medium text-gray-900">{quotation.contactPerson}</span>
-                </div>
+                {quotation.companyName && (
+                  <div>
+                    <span className="text-gray-500 block">Company</span>
+                    <span className="font-medium text-gray-900">{quotation.companyName}</span>
+                  </div>
+                )}
                 <div>
                   <span className="text-gray-500 block">Email</span>
                   <span className="font-medium text-gray-900">{quotation.email}</span>

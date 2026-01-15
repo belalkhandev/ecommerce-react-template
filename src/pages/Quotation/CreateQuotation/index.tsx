@@ -25,8 +25,8 @@ const CreateQuotation: FC = () => {
   });
 
   const [formData, setFormData] = useState<QuotationFormData>({
+    fullName: '',
     companyName: '',
-    contactPerson: '',
     email: '',
     phone: '',
     notes: '',
@@ -89,41 +89,41 @@ const CreateQuotation: FC = () => {
             <span>/</span>
             <button onClick={() => setShowForm(false)} className="hover:text-amber-600 transition-colors">Create Quotation</button>
             <span>/</span>
-            <span className="text-gray-900">Company Details</span>
+            <span className="text-gray-900">Contact Details</span>
           </nav>
 
           <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
                 <svg className="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Company Information</h1>
-                <p className="text-gray-600">Please provide your company details for the quotation</p>
+                <h1 className="text-2xl font-bold text-gray-900">Contact Details</h1>
+                <p className="text-gray-600">Please provide your contact information for the quotation</p>
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Company Name *</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                <input
+                  type="text"
+                  value={formData.fullName}
+                  onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                  placeholder="John Doe"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Company / Organization (Optional)</label>
                 <input
                   type="text"
                   value={formData.companyName}
                   onChange={(e) => setFormData(prev => ({ ...prev, companyName: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-                  placeholder="Your Company Name"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Contact Person *</label>
-                <input
-                  type="text"
-                  value={formData.contactPerson}
-                  onChange={(e) => setFormData(prev => ({ ...prev, contactPerson: e.target.value }))}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-                  placeholder="Full Name"
+                  placeholder="Company name if applicable"
                 />
               </div>
               <div>
@@ -133,7 +133,7 @@ const CreateQuotation: FC = () => {
                   value={formData.email}
                   onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-                  placeholder="email@company.com"
+                  placeholder="your@email.com"
                 />
               </div>
               <div>
@@ -165,7 +165,7 @@ const CreateQuotation: FC = () => {
                 </svg>
                 <div className="text-sm text-amber-800">
                   <p className="font-medium mb-1">What happens next?</p>
-                  <p>Our sales team will review your quotation request and respond within 24-48 business hours with detailed pricing and availability information.</p>
+                  <p>Our team will review your quotation request and respond within 24-48 business hours with detailed pricing and availability information.</p>
                 </div>
               </div>
             </div>
@@ -190,7 +190,7 @@ const CreateQuotation: FC = () => {
                 </button>
                 <button
                   onClick={handleSubmit}
-                  disabled={!formData.companyName || !formData.contactPerson || !formData.email || !formData.phone}
+                  disabled={!formData.fullName || !formData.email || !formData.phone}
                   className="flex-1 py-3 px-6 bg-amber-500 hover:bg-amber-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors"
                 >
                   Submit Quotation Request

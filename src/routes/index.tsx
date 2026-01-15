@@ -19,6 +19,12 @@ import Wishlist from '../pages/Dashboard/Wishlist';
 import CreateQuotation from '../pages/Quotation/CreateQuotation';
 import QuotationList from '../pages/Quotation/QuotationList';
 import QuotationDetails from '../pages/Quotation/QuotationDetails';
+import About from '../pages/About';
+import Contact from '../pages/Contact';
+import FAQ from '../pages/FAQ';
+import Returns from '../pages/Returns';
+import Shipping from '../pages/Shipping';
+import Support from '../pages/Support';
 
 export const router = createBrowserRouter([
   {
@@ -101,6 +107,30 @@ export const router = createBrowserRouter([
       {
         path: 'quotations/:id',
         element: <QuotationDetails />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+      {
+        path: 'contact',
+        element: <Contact />,
+      },
+      {
+        path: 'faq',
+        element: <FAQ />,
+      },
+      {
+        path: 'returns',
+        element: <Returns />,
+      },
+      {
+        path: 'shipping',
+        element: <Shipping />,
+      },
+      {
+        path: 'support',
+        element: <Support />,
       },
     ],
   },

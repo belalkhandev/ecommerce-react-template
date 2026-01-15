@@ -35,8 +35,8 @@ export interface Quotation {
   id: string;
   quotationNumber: string;
   userId: string;
-  companyName: string;
-  contactPerson: string;
+  fullName: string;
+  companyName?: string;
   email: string;
   phone: string;
   items: QuotationItem[];
@@ -52,8 +52,8 @@ export interface Quotation {
 }
 
 export interface QuotationFormData {
-  companyName: string;
-  contactPerson: string;
+  fullName: string;
+  companyName?: string;
   email: string;
   phone: string;
   notes: string;
