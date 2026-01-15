@@ -1,7 +1,8 @@
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 
-const CartIcon = () => {
+const CartIcon: FC = () => {
   const { totalItems } = useCart();
 
   return (

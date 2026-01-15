@@ -1,6 +1,7 @@
+import type { FC } from 'react';
 import { useSearch } from '../../context/SearchContext';
 
-const SearchIcon = () => {
+const SearchIcon: FC = () => {
   const { openSearch } = useSearch();
 
   return (

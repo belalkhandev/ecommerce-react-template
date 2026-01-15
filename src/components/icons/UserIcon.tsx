@@ -1,6 +1,7 @@
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const UserIcon = () => {
+const UserIcon: FC = () => {
   return (
     <Link to="/login" className="p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="User account">
       <svg

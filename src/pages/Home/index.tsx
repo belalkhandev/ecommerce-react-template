@@ -3,8 +3,9 @@ import HeroSection from '../../components/HeroSection';
 import Features from '../../components/Features';
 import CategorySlider from '../../components/CategorySlider';
 import ProductGrid from '../../components/ProductGrid';
+import QuotationBanner from '../../components/QuotationBanner';
 import {HeroSkeleton, CategorySliderSkeleton, ProductGridSkeleton} from '../../components/Skeleton';
-import {products, categories, getTrendingProducts, getBestSellers} from '../../data/products';
+import {categories, getTrendingProducts, getBestSellers} from '../../data/products';
 
 const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -121,6 +122,7 @@ const Home = () => {
                     linkHref="/products?sort=best-sellers"
                 />
             </div>
+            <QuotationBanner />
         </div>
     );
 };

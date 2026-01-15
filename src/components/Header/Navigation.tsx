@@ -1,9 +1,15 @@
+import type { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-const Navigation = () => {
+interface NavItem {
+  name: string;
+  path: string;
+}
+
+const Navigation: FC = () => {
   const location = useLocation();
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { name: 'Home', path: '/' },
     { name: 'Products', path: '/products' },
     { name: 'Categories', path: '/categories' },

@@ -9,9 +9,12 @@ import { CartProvider } from '../context/CartContext';
 import { WishlistProvider } from '../context/WishlistContext';
 import { CompareProvider } from '../context/CompareContext';
 import { SearchProvider } from '../context/SearchContext';
+import { QuotationProvider } from '../context/QuotationContext';
+import useScrollToTop from '../hooks/useScrollToTop';
 
 const MainLayoutContent = () => {
   const { product, isOpen, closeQuickView } = useQuickView();
+  useScrollToTop();
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -33,9 +36,11 @@ const MainLayout = () => {
       <WishlistProvider>
         <CompareProvider>
           <SearchProvider>
-            <QuickViewProvider>
-              <MainLayoutContent />
-            </QuickViewProvider>
+            <QuotationProvider>
+              <QuickViewProvider>
+                <MainLayoutContent />
+              </QuickViewProvider>
+            </QuotationProvider>
           </SearchProvider>
         </CompareProvider>
       </WishlistProvider>

@@ -1,21 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-
-type WakeLockSentinelLike = {
-  release: () => Promise<void>;
-  addEventListener: (type: 'release', listener: () => void) => void;
-};
-
-interface WakeLockState {
-  isSupported: boolean;
-  isActive: boolean;
-  isEnabled: boolean;
-  error: Error | null;
-}
-
-interface UseWakeLockReturn extends WakeLockState {
-  enable: () => void;
-  disable: () => void;
-}
+import type {
+  NavigatorWithWakeLock,
+  WakeLockSentinel,
+  UseWakeLockReturn,
+} from '../types';
 
 const useWakeLock = (): UseWakeLockReturn => {
   const [isSupported, setIsSupported] = useState(false);
@@ -23,7 +11,7 @@ const useWakeLock = (): UseWakeLockReturn => {
   const [isEnabled, setIsEnabled] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const wakeLockRef = useRef<WakeLockSentinelLike | null>(null);
+  const wakeLockRef = useRef<WakeLockSentinel | null>(null);
   const hasUserInteracted = useRef(false);
   const enabledRef = useRef(false);
 
@@ -40,7 +28,8 @@ const useWakeLock = (): UseWakeLockReturn => {
         await wakeLockRef.current.release();
       }
 
-      const sentinel = await (navigator as any).wakeLock.request('screen');
+      const nav = navigator as NavigatorWithWakeLock;
+      const sentinel = await nav.wakeLock!.request('screen');
       wakeLockRef.current = sentinel;
       setIsActive(true);
       setError(null);

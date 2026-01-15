@@ -1,10 +1,16 @@
+import type { FC } from 'react';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSearch } from '../../context/SearchContext';
 import { SearchResultSkeleton } from '../Skeleton';
 
-const SearchModal = () => {
+interface PopularCategory {
+  name: string;
+  icon: string;
+}
+
+const SearchModal: FC = () => {
   const {
     query,
     setQuery,
@@ -37,7 +43,7 @@ const SearchModal = () => {
     closeSearch();
   };
 
-  const popularCategories = [
+  const popularCategories: PopularCategory[] = [
     { name: 'Living Room', icon: '🛋️' },
     { name: 'Bedroom', icon: '🛏️' },
     { name: 'Dining', icon: '🍽️' },

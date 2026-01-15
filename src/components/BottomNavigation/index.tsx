@@ -1,5 +1,5 @@
+import type { FC, ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import type { ReactNode } from 'react';
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 
@@ -10,7 +10,7 @@ interface NavItem {
   badge?: number;
 }
 
-const BottomNavigation = () => {
+const BottomNavigation: FC = () => {
   const location = useLocation();
   const { totalItems: cartItems } = useCart();
   const { totalItems: wishlistItems } = useWishlist();

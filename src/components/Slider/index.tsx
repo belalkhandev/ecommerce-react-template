@@ -20,7 +20,7 @@ const Slider = ({
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const startTimeRef = useRef<number>(0);
 
   const autoplayPlugin = Autoplay({

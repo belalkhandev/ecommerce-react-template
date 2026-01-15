@@ -1,11 +1,12 @@
+import type { FC } from 'react';
 import Slider from '../Slider';
-import type {SliderContentProps} from '../Slider/SliderContent';
+import type { SliderContentProps } from '../Slider/SliderContent';
 
 interface HeroSectionProps {
-    slides: SliderContentProps[];
+  slides: SliderContentProps[];
 }
 
-const HeroSection = ({slides}: HeroSectionProps) => {
+const HeroSection: FC<HeroSectionProps> = ({ slides }) => {
     return (
         <div className="bg-amber-50">
             <section className="container mx-auto px-4 py-4 md:py-8">

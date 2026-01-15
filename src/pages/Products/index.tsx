@@ -3,7 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProductCard from '../../components/ProductCard';
 import { ProductGridSkeleton } from '../../components/Skeleton';
-import { products, categories, searchProducts, getProductsByCategory } from '../../data/products';
+import { products, categories, searchProducts } from '../../data/products';
 import type { Product } from '../../data/products';
 
 type SortOption = 'default' | 'price-low' | 'price-high' | 'newest' | 'rating';
