@@ -20,12 +20,16 @@
     "vite": "^7.2.4"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.90.17",
+    "axios": "^1.13.2",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.26.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-inner-image-zoom": "^4.0.1",
-    "react-router-dom": "^7.12.0"
+    "react-router-dom": "^7.12.0",
+    "sonner": "^2.0.7",
+    "zod": "^4.3.5"
   }
 }

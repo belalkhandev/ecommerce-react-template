@@ -1,23 +1,23 @@
-import type { FC } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import type {FC} from 'react';
+import {Link, useLocation} from 'react-router-dom';
 
 interface NavItem {
-  name: string;
-  path: string;
+    name: string;
+    path: string;
 }
 
 const Navigation: FC = () => {
-  const location = useLocation();
+    const location = useLocation();
 
-  const navItems: NavItem[] = [
-    { name: 'Home', path: '/' },
-    { name: 'Products', path: '/products' },
-    { name: 'Categories', path: '/categories' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
-  ];
+    const navItems: NavItem[] = [
+        {name: 'Home', path: '/'},
+        {name: 'Products', path: '/products'},
+        {name: 'Categories', path: '/categories'},
+        {name: 'About', path: '/about'},
+        {name: 'Contact', path: '/contact'},
+    ];
 
-  const isActive = (path: string) => location.pathname === path;
+    const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav className="hidden md:flex items-center space-x-8">
@@ -25,7 +25,7 @@ const Navigation: FC = () => {
         <Link
           key={item.path}
           to={item.path}
-          className={`text-sm font-medium transition-colors hover:text-amber-600 ${
+          className={`font-medium transition-colors hover:text-amber-600 ${
             isActive(item.path) ? 'text-amber-600' : 'text-gray-700'
           }`}
         >

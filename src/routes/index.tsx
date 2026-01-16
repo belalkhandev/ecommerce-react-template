@@ -25,11 +25,14 @@ import FAQ from '../pages/FAQ';
 import Returns from '../pages/Returns';
 import Shipping from '../pages/Shipping';
 import Support from '../pages/Support';
+import NotFound from '../pages/NotFound';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <ErrorBoundary><NotFound /></ErrorBoundary>,
     children: [
       {
         index: true,
@@ -131,6 +134,10 @@ export const router = createBrowserRouter([
       {
         path: 'support',
         element: <Support />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },
