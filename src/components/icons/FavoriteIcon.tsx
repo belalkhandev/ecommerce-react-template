@@ -1,7 +1,8 @@
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { useWishlist } from '../../context/WishlistContext';
 
-const FavoriteIcon = () => {
+const FavoriteIcon: FC = () => {
   const { totalItems } = useWishlist();
 
   return (

@@ -16,11 +16,23 @@ import Profile from '../pages/Dashboard/Profile';
 import ChangePassword from '../pages/Dashboard/ChangePassword';
 import Addresses from '../pages/Dashboard/Addresses';
 import Wishlist from '../pages/Dashboard/Wishlist';
+import CreateQuotation from '../pages/Quotation/CreateQuotation';
+import QuotationList from '../pages/Quotation/QuotationList';
+import QuotationDetails from '../pages/Quotation/QuotationDetails';
+import About from '../pages/About';
+import Contact from '../pages/Contact';
+import FAQ from '../pages/FAQ';
+import Returns from '../pages/Returns';
+import Shipping from '../pages/Shipping';
+import Support from '../pages/Support';
+import NotFound from '../pages/NotFound';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
+    errorElement: <ErrorBoundary><NotFound /></ErrorBoundary>,
     children: [
       {
         index: true,
@@ -86,6 +98,46 @@ export const router = createBrowserRouter([
       {
         path: 'wishlist',
         element: <Wishlist />,
+      },
+      {
+        path: 'quotations',
+        element: <QuotationList />,
+      },
+      {
+        path: 'quotations/create',
+        element: <CreateQuotation />,
+      },
+      {
+        path: 'quotations/:id',
+        element: <QuotationDetails />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+      {
+        path: 'contact',
+        element: <Contact />,
+      },
+      {
+        path: 'faq',
+        element: <FAQ />,
+      },
+      {
+        path: 'returns',
+        element: <Returns />,
+      },
+      {
+        path: 'shipping',
+        element: <Shipping />,
+      },
+      {
+        path: 'support',
+        element: <Support />,
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },

@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import DashboardLayout from '../../../components/DashboardLayout';
+import { useCompare } from '../../../context/CompareContext';
 
 const UserDashboard = () => {
-  // Sample data - will be dynamic later
+  const { items: compareItems } = useCompare();
+
   const stats = [
     {
       label: 'Total Orders',
@@ -24,6 +26,17 @@ const UserDashboard = () => {
         </svg>
       ),
       color: 'bg-red-50 text-red-500',
+    },
+    {
+      label: 'Compare Items',
+      value: String(compareItems.length),
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+      ),
+      color: 'bg-purple-50 text-purple-600',
+      link: '/compare',
     },
     {
       label: 'Saved Addresses',
@@ -80,7 +93,7 @@ const UserDashboard = () => {
 
   const quickActions = [
     { label: 'Track Order', path: '/orders', icon: '📦' },
-    { label: 'Reorder', path: '/orders', icon: '🔄' },
+    { label: 'Compare', path: '/compare', icon: '⚖️' },
     { label: 'Support', path: '/support', icon: '💬' },
     { label: 'Returns', path: '/returns', icon: '↩️' },
   ];
@@ -109,19 +122,35 @@ const UserDashboard = () => {
         className="space-y-6"
       >
         {/* Stats Grid */}
-        <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="bg-white rounded-xl p-4 md:p-5 shadow-sm hover:shadow-md transition-shadow"
-            >
-              <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${stat.color} flex items-center justify-center mb-3`}>
-                {stat.icon}
+        <motion.div variants={itemVariants} className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+          {stats.map((stat) => {
+            const content = (
+              <>
+                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${stat.color} flex items-center justify-center mb-3`}>
+                  {stat.icon}
+                </div>
+                <p className="text-2xl md:text-3xl font-bold text-gray-900">{stat.value}</p>
+                <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
+              </>
+            );
+
+            return stat.link ? (
+              <Link
+                key={stat.label}
+                to={stat.link}
+                className="bg-white rounded-xl p-4 md:p-5 shadow-sm hover:shadow-md transition-shadow block"
+              >
+                {content}
+              </Link>
+            ) : (
+              <div
+                key={stat.label}
+                className="bg-white rounded-xl p-4 md:p-5 shadow-sm hover:shadow-md transition-shadow"
+              >
+                {content}
               </div>
-              <p className="text-2xl md:text-3xl font-bold text-gray-900">{stat.value}</p>
-              <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
 
         {/* Quick Actions - Mobile */}

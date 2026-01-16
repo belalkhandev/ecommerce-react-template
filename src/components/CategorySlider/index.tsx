@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -8,7 +9,7 @@ interface CategorySliderProps {
   categories: CategoryCardProps[];
 }
 
-const CategorySlider = ({ categories }: CategorySliderProps) => {
+const CategorySlider: FC<CategorySliderProps> = ({ categories }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     slidesToScroll: 1,

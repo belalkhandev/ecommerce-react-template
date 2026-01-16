@@ -1,4 +1,12 @@
-const features = [
+import type { FC, ReactNode } from 'react';
+
+interface Feature {
+  icon: ReactNode;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,7 +45,7 @@ const features = [
   },
 ];
 
-const Features = () => {
+const Features: FC = () => {
   return (
     <section className="bg-white border-b border-gray-100">
       <div className="container mx-auto px-4 py-8 md:py-10">

@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/styles.min.css';
 
@@ -8,23 +9,23 @@ interface ImageMagnifierProps {
   className?: string;
 }
 
-const ImageMagnifier = ({
+const ImageMagnifier: FC<ImageMagnifierProps> = ({
   src,
   alt,
   zoomSrc,
   className = '',
-}: ImageMagnifierProps) => {
+}) => {
   return (
     <div className={`image-magnifier ${className}`}>
       <InnerImageZoom
         src={src}
         zoomSrc={zoomSrc || src}
-        alt={alt}
         zoomType="hover"
         zoomPreload={true}
         fullscreenOnMobile={true}
         className="w-full h-full"
         imgAttributes={{
+          alt,
           style: {
             width: '100%',
             height: '100%',

@@ -1,6 +1,7 @@
+import type { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-const Logo = () => {
+const Logo: FC = () => {
   return (
     <Link to="/" className="flex items-center">
       <div className="text-2xl font-bold text-gray-900">

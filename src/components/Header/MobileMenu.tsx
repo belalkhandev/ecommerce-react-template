@@ -1,12 +1,18 @@
+import type { FC } from 'react';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const MobileMenu = () => {
+interface MenuItem {
+  name: string;
+  path: string;
+}
+
+const MobileMenu: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { name: 'Home', path: '/' },
     { name: 'Products', path: '/products' },
     { name: 'Categories', path: '/categories' },

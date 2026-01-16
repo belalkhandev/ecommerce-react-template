@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Logo from './Logo';
@@ -8,7 +9,7 @@ import UserIcon from '../icons/UserIcon';
 import CartIcon from '../icons/CartIcon';
 import FavoriteIcon from '../icons/FavoriteIcon';
 
-const Header = () => {
+const Header: FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {

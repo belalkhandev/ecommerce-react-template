@@ -1,17 +1,15 @@
+import type { FC } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 import { CartItemSkeleton } from '../../components/Skeleton';
+import type { QuantitySelectorProps } from '../../types';
 
-const QuantitySelector = ({
+const QuantitySelector: FC<QuantitySelectorProps> = ({
   quantity,
   onIncrease,
   onDecrease,
-}: {
-  quantity: number;
-  onIncrease: () => void;
-  onDecrease: () => void;
 }) => (
   <div className="flex items-center border border-gray-300 rounded-lg">
     <button
@@ -34,7 +32,7 @@ const QuantitySelector = ({
   </div>
 );
 
-const Cart = () => {
+const Cart: FC = () => {
   const {
     items,
     updateQuantity,
@@ -47,12 +45,12 @@ const Cart = () => {
     totalItems,
   } = useCart();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, _setIsLoading] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
   const [couponDiscount, setCouponDiscount] = useState(0);
 
-  const handleApplyCoupon = () => {
+  const handleApplyCoupon = (): void => {
     if (couponCode.toUpperCase() === 'SAVE10') {
       setCouponDiscount(subtotal * 0.1);
       setAppliedCoupon(couponCode);
@@ -62,7 +60,7 @@ const Cart = () => {
     }
   };
 
-  const handleRemoveCoupon = () => {
+  const handleRemoveCoupon = (): void => {
     setCouponDiscount(0);
     setAppliedCoupon(null);
     setCouponCode('');
@@ -70,7 +68,7 @@ const Cart = () => {
 
   const finalTotal = total - couponDiscount;
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -78,7 +76,7 @@ const Cart = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };

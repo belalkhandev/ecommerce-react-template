@@ -1,33 +1,19 @@
+import type { FC } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
+import type {
+  CheckoutStep,
+  ShippingData,
+  PaymentData,
+  ShippingMethod,
+  StepItem,
+} from '../../types';
 
-type Step = 'shipping' | 'payment' | 'review';
-
-interface ShippingData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  address: string;
-  apartment: string;
-  city: string;
-  state: string;
-  zip: string;
-  country: string;
-}
-
-interface PaymentData {
-  cardNumber: string;
-  cardName: string;
-  expiry: string;
-  cvv: string;
-}
-
-const Checkout = () => {
-  const { items, subtotal, shipping, tax, total, clearCart } = useCart();
-  const [currentStep, setCurrentStep] = useState<Step>('shipping');
+const Checkout: FC = () => {
+  const { items, subtotal, shipping, tax, clearCart } = useCart();
+  const [currentStep, setCurrentStep] = useState<CheckoutStep>('shipping');
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
 
@@ -53,7 +39,7 @@ const Checkout = () => {
 
   const [shippingMethod, setShippingMethod] = useState('standard');
 
-  const shippingMethods = [
+  const shippingMethods: ShippingMethod[] = [
     { id: 'standard', name: 'Standard Shipping', price: shipping, time: '5-7 business days' },
     { id: 'express', name: 'Express Shipping', price: 29.99, time: '2-3 business days' },
     { id: 'overnight', name: 'Overnight Shipping', price: 49.99, time: '1 business day' },
@@ -62,7 +48,7 @@ const Checkout = () => {
   const selectedShipping = shippingMethods.find(m => m.id === shippingMethod) || shippingMethods[0];
   const finalTotal = subtotal + selectedShipping.price + tax;
 
-  const steps = [
+  const steps: StepItem[] = [
     { id: 'shipping', label: 'Shipping', number: 1 },
     { id: 'payment', label: 'Payment', number: 2 },
     { id: 'review', label: 'Review', number: 3 },

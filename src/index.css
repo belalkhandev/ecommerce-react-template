@@ -3,3 +3,12 @@
 @theme {
   --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif;
 }
+
+/* Font rendering optimizations */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-stretch: 100%;
+  font-optical-sizing: none;
+}
